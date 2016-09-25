@@ -151,9 +151,18 @@ bot.on('message', message => {
 
 bot.on('message', message => {
   if (message.content.startsWith('..github')) {
-    message.reply("Check our github: https://github.com/DarkN-exus/darkbot/tree/master")
+    message.reply("Check our github: https://github.com/DarkBot-Coding/darkbot")
+    console.log('[C] ' + message.author.username + ' used ..github on ' + message.guild.name)
   }
 });
+
+bot.on('message', message => {
+  if (message.content.startsWith('..trello')) {
+    message.reply("Check our trello: https://trello.com/b/9poRgtbU/darkbot")
+    console.log('[C] ' + message.author.username + ' used ..trello on ' + message.guild.name)
+  }
+});
+
 bot.on('message', message => {
   let banRole = message.guild.roles.find("name", "Ban")
   if (message.content.startsWith('..ban') && message.member.roles.has(banRole.id)) {
@@ -184,7 +193,7 @@ bot.on('message', message => {
 bot.on('message', message => {
   if (message.content.startsWith('..help')) {
       message.channel.sendMessage("*DarkBot's Help*")
-      message.channel.sendCode("none","..ping: Checks if bot is online and gives you Ping in MS\n..inviteme: Gives you and oauth link to invite the bot\n..joindiscord: Gives you a link to his discord\n..quotes: Shows some funny quotes\n..stats: Shows server stats")
+      message.channel.sendCode("none","..ping: Checks if bot is online and gives you Ping in MS\n..inviteme: Gives you and oauth link to invite the bot\n..joindiscord: Gives you a link to his discord\n..quotes: Shows some funny quotes\n..stats: Shows server stats\n..github: Gives you a link to our github\n..trello: Gives you a link to our trello")
       console.log('[C] ' + message.author.username + ' used ..help on ' + message.guild.name)
   }
 });

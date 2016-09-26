@@ -1,6 +1,10 @@
 # DARKBOT
 A Discord Bot
 --
+
+Now with 24/7 Uptime!
+--
+
 http://darkbot.darknexus.tk/
 
 --

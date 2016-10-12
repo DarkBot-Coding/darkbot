@@ -1,4 +1,6 @@
 
+const now = require('performance-now');
+
 const Discord = require('discord.js');
 
 const bot = new Discord.Client();

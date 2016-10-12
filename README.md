@@ -9,3 +9,6 @@ Want to help the project? Contact me on discord! https://discord.gg/474Hgvx
 
 --
 Feel free to use this code, but credit us
+
+--
+Actual code is useless, we will be updating it.

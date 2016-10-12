@@ -18,6 +18,22 @@ bot.on('ready', () => {
 
 // create an event listener for messages
 bot.on('message', message => {
+  if(message.author.bot) return;
+  if (!message.guild) {
+  message.reply("I'm sorry, but i don't work on Private Messages :smiley:")
+  }
+  else {
+    if (message.content.toLowerCase() === 'darkbot, ping') {
+        console.log('[C] ' + message.author.username + ' used darkbot, ping on ' + message.guild.name)
+        var startTime = now();
+        message.channel.sendMessage("Ping Started")
+            .then(message => {
+                var endTime = now();
+                return message.edit(`Ping took ${(endTime - startTime).toFixed(3)} ms.`);
+            }).catch(console.error);
+    }
+  }
+
 });
 
 // Create an event listener for new guilds added
@@ -31,5 +47,5 @@ bot.on("guildDelete", function(server) {
   console.log("[i] I have been removed from " + server.name + " Server");
 })
 
-// log bot in
+// log our bot in
 bot.login('token');

@@ -24,5 +24,10 @@ bot.on("guildCreate", function(server) {
   server.defaultChannel.sendMessage("I've been invited to this server,need help? visit my site http://darkbot.darknexus.tk/");
 })
 
+// Create an event listener for guilds deleted
+bot.on("guildDelete", function(server) {
+  console.log("[i] I have been removed from " + server.name + " Server");
+})
+
 // log bot in
 bot.login('token');

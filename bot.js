@@ -18,12 +18,13 @@ bot.on('ready', () => {
 
 // create an event listener for messages
 bot.on('message', message => {
+  let prefix = "darkbot, ";
   if(message.author.bot) return;
   if (!message.guild) {
   message.reply("I'm sorry, but i don't work on Private Messages :smiley:")
   }
   else {
-    if (message.content.toLowerCase() === 'darkbot, ping') {
+    if (message.content.toLowerCase().startsWith(prefix + 'ping')) {
         console.log('[C] ' + message.author.username + ' used darkbot, ping on ' + message.guild.name)
         var startTime = now();
         message.channel.sendMessage("Ping Started")

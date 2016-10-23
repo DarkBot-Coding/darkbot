@@ -105,50 +105,5 @@ bot.on("guildDelete", function(server) {
   console.log("[i] I have been removed from " + server.name + " Server");
 })
 
-    message.reply("Banned " + message.mentions.users.first())
-    console.log('[C] ' + message.author.username + ' Banned ' + message.mentions.users.first() + ' On ' + message.guild.name)
-    message.guild.ban(message.mentions.users.first(), "7");
-  }
-  if (message.content.toLowerCase().startsWith('darkowner, restart') && message.author.id === '156093486053982208') {
-    bot.user.setUsername('DarkBot MK.1')
-    .then(user => console.log(`My new username is ${user.username}`))
-    bot.user.setStatus("online", "We are on: " + bot.guilds.size + " Servers" + " With " + bot.users.size + " Users");
-    console.log("Game Reset")
-  }
-  if (message.content.toLowerCase().startsWith('darkbot, help')) {
-      message.channel.sendMessage("*DarkBot's Help*")
-      message.channel.sendCode("none","darkbot, ping: Checks if bot is online and gives you Ping in MS\ndarkbot, inviteme: Gives you and oauth link to invite the bot\ndarkbot, joindiscord: Gives you a link to his discord\ndarkbot, quotes: Shows some funny quotes\ndarkbot, stats: Shows server stats\ndarkbot, github: Gives you a link to our github\ndarkbot, trello: Gives you a link to our trello\n\n\nUse darkmod, help for mod help\nNote: Kick Member Permission Needed, Commands are case insensitive")
-      console.log('[C] ' + message.author.username + ' used darkbot, help on ' + message.guild.name)
-  }
-  if (message.content.toLowerCase().startsWith('darkmod, help')) {
-      message.channel.sendMessage("*DarkBot's Mod Help*")
-      message.channel.sendCode("none","darkmod, ban: Bans the mentioned user <darkmod, ban @User>\ndarkmod, kick: Kicks the mentioned user <darkmod, kick @User>\n\n Note: Commands are case insensitive")
-      console.log('[C] ' + message.author.username + ' used darkmod, help on ' + message.guild.name)
-  }
-  if (message.content.toLowerCase().startsWith('darkowner, restart') && message.author.id === '156093486053982208') {
-      console.log('[C] ' + message.author.username + ' shut down bot on ' + message.guild.name)
-      message.channel.sendMessage(":wave:")
-      process.exit();
-  }
-  if (message.content.toLowerCase().startsWith('darkmod, kick') && message.member.roles.filter(r=>r.hasPermission('KICK_MEMBERS')).size > 0) {
-  message.reply("Kicked " + message.mentions.users.first())
-  console.log('[C] ' + message.author.username + ' Kicked ' + message.mentions.users.first() + ' On ' + message.guild.name)
-  message.guild.member(message.mentions.users.first()).kick();
-}
-  }
-
-});
-
-// Create an event listener for new guilds added
-bot.on("guildCreate", function(server) {
-  console.log("[i] I have been added to " + server.name + " Server, the owner's id is " + server.owner.user.id);
-  server.defaultChannel.sendMessage("I've been invited to this server,need help? visit my site http://darkbot.darknexus.tk/");
-})
-
-// Create an event listener for guilds deleted
-bot.on("guildDelete", function(server) {
-  console.log("[i] I have been removed from " + server.name + " Server");
-})
-
 // log our bot in
 bot.login('token');

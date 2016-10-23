@@ -47,18 +47,64 @@ bot.on('message', message => {
       console.log('[C] ' + message.author.username + ' used darkbot, quotes on ' + message.guild.name)
     }
     if (message.content.toLowerCase() === 'darkbot, stats') {
-        message.channel.sendCode('none','BOT STATS\n\n' + 'Users: ' + bot.users.size + '\nServers: ' + bot.guilds.size + '\nChannels: ' + bot.channels.size);
-        console.log('[C] ' + message.author.username + ' used darkbot, stats on ' + message.guild.name)
+      var date = new Date(bot.uptime);
+      var str = '';
+      str += date.getUTCDate()-1 + " days, ";
+      str += date.getUTCHours() + " hours, ";
+      str += date.getUTCMinutes() + " minutes, ";
+      str += date.getUTCSeconds() + " seconds, ";
+      str += date.getUTCMilliseconds() + " millis";
+        message.channel.sendCode('none','DarkBot Stats\n\n' + 'Uptime: ' + str + '\nUsers: ' + bot.users.size + '\nServers: ' + bot.guilds.size + '\nChannels: ' + bot.channels.size);
+        console.log('[C] ' + message.author.username + ' used /stats on ' + message.guild.name)
     }
     if (message.content.toLowerCase() === 'darkbot, github') {
       message.reply("Check our github: https://github.com/DarkBot-Coding/darkbot")
       console.log('[C] ' + message.author.username + ' used darkbot, github on ' + message.guild.name)
     }
-    if (message.content.toLowerCase() === 'darkbot, trello') {
-      message.reply("Check our trello: https://trello.com/b/9poRgtbU/darkbot")
-      console.log('[C] ' + message.author.username + ' used darkbot, trello on ' + message.guild.name)
+    if (message.content.toLowerCase() === 'darkbot, site') {
+      message.reply("Check our site: http://darkbot.darknexus.tk/")
+      console.log('[C] ' + message.author.username + ' used darkbot, site on ' + message.guild.name)
     }
-    if (message.content.toLowerCase().startsWith('darkmod, ban') && message.member.roles.filter(r=>r.hasPermission('BAN_MEMBERS')).size > 0) {
+    if (message.content.toLowerCase().startsWith('darkbot, ban') && message.member.roles.filter(r=>r.hasPermission('BAN_MEMBERS')).size > 0) {
+    message.reply("Banned " + message.mentions.users.first())
+    console.log('[C] ' + message.author.username + ' Banned ' + message.mentions.users.first() + ' On ' + message.guild.name)
+    message.guild.ban(message.mentions.users.first(), "7");
+  }
+  if (message.content.toLowerCase().startsWith('darkbot, restart') && message.author.id === '156093486053982208') {
+    bot.user.setUsername('DarkBot MK.1')
+    .then(user => console.log(`My new username is ${user.username}`))
+    bot.user.setStatus("online", "We are on: " + bot.guilds.size + " Servers" + " With " + bot.users.size + " Users");
+    console.log("Game Reset")
+  }
+  if (message.content.toLowerCase().startsWith('darkbot, help')) {
+      message.channel.sendMessage("Check the help on our site :smiley: http://darkbot.darknexus.tk/commands.html")
+      console.log('[C] ' + message.author.username + ' used darkbot, help on ' + message.guild.name)
+  }
+  if (message.content.toLowerCase().startsWith('darkbot, restart') && message.author.id === '156093486053982208') {
+      console.log('[C] ' + message.author.username + ' shut down bot on ' + message.guild.name)
+      message.channel.sendMessage(":wave:")
+      process.exit();
+  }
+  if (message.content.toLowerCase().startsWith('darkbot, kick') && message.member.roles.filter(r=>r.hasPermission('KICK_MEMBERS')).size > 0) {
+  message.reply("Kicked " + message.mentions.users.first())
+  console.log('[C] ' + message.author.username + ' Kicked ' + message.mentions.users.first() + ' On ' + message.guild.name)
+  message.guild.member(message.mentions.users.first()).kick();
+}
+  }
+
+});
+
+// Create an event listener for new guilds added
+bot.on("guildCreate", function(server) {
+  console.log("[i] I have been added to " + server.name + " Server, the owner's id is " + server.owner.user.id);
+  server.defaultChannel.sendMessage("I've been invited to this server,need help? visit my site http://darkbot.darknexus.tk/");
+})
+
+// Create an event listener for guilds deleted
+bot.on("guildDelete", function(server) {
+  console.log("[i] I have been removed from " + server.name + " Server");
+})
+
     message.reply("Banned " + message.mentions.users.first())
     console.log('[C] ' + message.author.username + ' Banned ' + message.mentions.users.first() + ' On ' + message.guild.name)
     message.guild.ban(message.mentions.users.first(), "7");

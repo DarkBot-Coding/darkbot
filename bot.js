@@ -92,7 +92,8 @@ bot.on('message', message => {
 }
 if (message.content.toLowerCase().startsWith(prefix+'userinfo')) {
 console.log('[C] ' + message.author.username + ' Used //userinfo On ' + message.guild.name)
-message.channel.sendCode('none', message.author.username +  " 's Info'\n\n" + "Name: "  + message.author.username + '\nAvatar: ' + message.author.avatarURL);
+message.channel.sendCode('none', message.author.username +  " 's Info'\n\n" + "Name: "  + message.author.username + "\nAvatar: ");
+message.channel.sendMessage(message.author.avatarURL)
 }
   }
 

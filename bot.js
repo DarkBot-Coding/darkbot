@@ -34,19 +34,19 @@ bot.on('message', message => {
                 return message.edit(`Ping took ${(endTime - startTime).toFixed(3)} ms.`);
             }).catch(console.error);
     }
-    if (message.content.toLowerCase() === 'inviteme') {
+    if (message.content.toLowerCase() === prefix+'inviteme') {
       message.reply('Just click here and select a server! :) https://goo.gl/am2cBq');
       console.log('[C] ' + message.author.username + ' used  inviteme on ' + message.guild.name)
     }
-    if (message.content.toLowerCase() === 'joindiscord') {
+    if (message.content.toLowerCase() === prefix+'joindiscord') {
       message.reply('Join my discord server :smiley: https://discord.gg/474Hgvx');
       console.log('[C] ' + message.author.username + ' used  joindiscord on ' + message.guild.name)
     }
-    if (message.content.toLowerCase() === 'quotes') {
+    if (message.content.toLowerCase() === prefix+'quotes') {
       message.channel.sendCode("none", "Please dont,One dumb bot is enough xD Keep yours sane :P\n-GoggleBot 13/09/2016\n\nsex is like software, its better when its free\nPosted by ProXyy on the 22/09/2016\n Source:linus torvalds\n\nImagine if androids were programmed to say Trust me, I'm an android after they finish talking lol\nOfficer: Are you human?\nAndroid: Yes, I am. Trust me, I'm an android.\nBy: Zuris on the 24/09/2016")
       console.log('[C] ' + message.author.username + ' used  quotes on ' + message.guild.name)
     }
-    if (message.content.toLowerCase() === 'stats') {
+    if (message.content.toLowerCase() === prefix+'stats') {
       var date = new Date(bot.uptime);
       var str = '';
       str += date.getUTCDate()-1 + " days, ";
@@ -70,7 +70,7 @@ bot.on('message', message => {
     console.log('[C] ' + message.author.username + ' Banned ' + message.mentions.users.first() + ' On ' + message.guild.name)
     message.guild.ban(message.mentions.users.first(), "7");
   }
-  if (message.content.toLowerCase().startsWith('restart') && message.author.id === '156093486053982208') {
+  if (message.content.toLowerCase().startsWith(prefix+'restart') && message.author.id === '156093486053982208') {
     bot.user.setUsername('DarkBot MK.1')
     .then(user => console.log(`My new username is ${user.username}`))
     bot.user.setStatus("online", "Serving " + bot.users.size + " Users On " + bot.guilds.size + " Servers And " + bot.channels.size + " Channels");
